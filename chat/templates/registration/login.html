@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="content-section">
+    {% if forms.errors %}
+    <p>There's something wrong with what you entered!</p>
+    {% endif %}
+
+    <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Login</legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <!-- <input type="submit" value="login"> -->
+            <button class="btn btn-outline-info" type="submit">Login</button>
+            <input type="hidden" name="next" value="{{ next }}">
+            <small class="text-muted ml-2">
+                <a href="{% url 'password_reset' %}">Forgot Password ?</a>
+            </small>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

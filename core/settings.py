@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-c=c^yrr2@3%mznnnc=mobj5y!86f6i)=mw1fd9ccqji)qwri#3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '192.168.1.7',
+    '192.168.1.43',
+]
 
 
 # Application definition
@@ -39,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'chat',
     'channels',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -119,6 +124,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+LOGIN_REDIRECT_URL = '/chat/'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
